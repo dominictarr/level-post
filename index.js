@@ -5,7 +5,7 @@ module.exports = function post (db, opts, each) {
   if(!each)
     each = opts, opts = {}
 
-  if('function' === db.post)
+  if('function' === typeof db.post)
     return db.post(opts, each)
 
   var checker = sr.checker(opts)
