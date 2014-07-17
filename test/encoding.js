@@ -24,7 +24,7 @@ test('encoding', function (t) {
   }
   post(db, opts, function (op) {
     t.ok(op.key)
-    t.equal(op.value, expected.value.shift())
+    t.equal(op.value, expected.shift())
     t.equal(op.type, 'put')
   })
   db.batch(data)

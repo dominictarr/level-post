@@ -8,6 +8,7 @@
     "url": "git://github.com/dominictarr/level-post.git"
   },
   "dependencies": {
+    "defined": "0.0.0",
     "string-range": "~1.2.1"
   },
   "devDependencies": {
