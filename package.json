@@ -11,8 +11,9 @@
     "string-range": "~1.2.1"
   },
   "devDependencies": {
-    "tape": "~1.0.4",
-    "level-test": "~1.3.0"
+    "bytewise": "~0.7.1",
+    "level-test": "^1.6.3",
+    "tape": "^2.13.3"
   },
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
