@@ -3,6 +3,13 @@ var sr = require('string-range')
 var defined = require('defined')
 var beq = require('buffer-equal')
 
+function eq (a, b) {
+  if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
+    return beq(a, b)
+  }
+  else return a === b
+}
+
 module.exports = function post (db, opts, each) {
   if(!each)
     each = opts, opts = {}
@@ -24,8 +31,8 @@ module.exports = function post (db, opts, each) {
  
   function cmp (key) {
     var ek = encode(key)
-    if (opts.gt && beq(ek, copts.min)) return false
-    if (opts.lt && beq(ek, copts.max)) return false
+    if (opts.gt && eq(ek, copts.min)) return false
+    if (opts.lt && eq(ek, copts.max)) return false
     return checker(ek)
   }
 
