@@ -8,13 +8,11 @@
     "url": "git://github.com/dominictarr/level-post.git"
   },
   "dependencies": {
-    "buffer-equal": "~0.0.1",
-    "defined": "~0.0.0",
-    "string-range": "~1.2.1"
+    "ltgt": "^2.1.2"
   },
   "devDependencies": {
     "bytewise": "~0.7.1",
-    "level-test": "^1.6.3",
+    "level-test": "^2.0.2",
     "tape": "^2.13.3"
   },
   "scripts": {
@@ -23,3 +21,5 @@
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
   "license": "MIT"
 }
+
+

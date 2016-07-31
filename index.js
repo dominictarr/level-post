@@ -1,7 +1,4 @@
-
-var sr = require('string-range')
-var defined = require('defined')
-var beq = require('buffer-equal')
+var ltgt = require('ltgt')
 
 function eq (a, b) {
   if (Buffer.isBuffer(a) && Buffer.isBuffer(b)) {
@@ -21,19 +18,10 @@ module.exports = function post (db, opts, each) {
     || (db.options && db.options.keyEncoding && db.options.keyEncoding.encode)
     || function (x) { return x }
 
-  var min = defined(opts.min, opts.gt, opts.gte, opts.start)
-  var max = defined(opts.max, opts.lt, opts.lte, opts.end)
+  var _opts = ltgt.toLtgt(opts, {}, encode)
 
-  var copts = {}
-  if (min !== undefined) copts.min = encode(min)
-  if (max !== undefined) copts.max = encode(max)
-  var checker = sr.checker(copts)
- 
   function cmp (key) {
-    var ek = encode(key)
-    if (opts.gt && eq(ek, copts.min)) return false
-    if (opts.lt && eq(ek, copts.max)) return false
-    return checker(ek)
+    return ltgt.contains(_opts, encode(key))
   }
 
   function onPut (key, val) {
@@ -63,3 +51,4 @@ module.exports = function post (db, opts, each) {
     db.removeListener('batch', onPut)
   }
 }
+
