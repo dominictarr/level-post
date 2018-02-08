@@ -47,8 +47,8 @@ module.exports = function post (db, opts, each) {
 
   return function () {
     db.removeListener('put', onPut)
-    db.removeListener('del', onPut)
-    db.removeListener('batch', onPut)
+    db.removeListener('del', onDel)
+    db.removeListener('batch', onBatch)
   }
 }
 
